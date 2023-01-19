@@ -1,0 +1,54 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --clr-one: #4f81c7;
+  --clr-two: #f0d78c;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+.wrapper {
+  width: min(50%, 90rem);
+  margin-inline: auto;
+}
+.header-container {
+  background: var(--clr-one);
+}
+.header-content {
+  padding: 2rem 0;
+  color: #fff;
+}
+/*-------------------Meme Component----------------------*/
+.meme-container {
+  padding: 2rem 0;
+  min-height: 10vh;
+}
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form input {
+  width: 48%;
+  outline: none;
+  padding: 0.5rem 0.3rem;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+.btn {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  background: var(--clr-one);
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  border-radius: 5px;
+}
+.result-container {
+  padding-top: 2rem;
+}
