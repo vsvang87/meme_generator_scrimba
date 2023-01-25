@@ -49,6 +49,18 @@ body {
   color: #fff;
   border-radius: 5px;
 }
+/*-----------------Image Container---------------------------*/
 .result-container {
   padding-top: 2rem;
+}
+.result-container img {
+  width: 100%;
+}
+.box {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  display: inline-block;
+  margin-right: 4px;
+  border-radius: 5px;
 }
