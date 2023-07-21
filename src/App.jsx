@@ -1,35 +1,66 @@
 import React, { useState } from "react";
 import "./App.css";
-import Header from "./assets/component/Header";
-import Meme from "./assets/component/Meme";
+//import Header from "./assets/component/Header";
+//import Meme from "./assets/component/Meme";
 import Thing from "./assets/component/Thing";
 import Card from "./assets/component/Card";
 import Count from "./assets/component/Count";
 import Body from "./assets/component/Body";
 import boxes from "./assets/component/boxes";
 import Box from "./assets/component/Box";
+import Joke from "./assets/component/Joke";
 
 //function
-function App(props) {
+
+function App() {
   const [squares, setSquares] = useState(boxes);
-  //style css
-  const style = {
-    backgroundColor: props.darkMode ? "lightgray" : "black",
-    border: "2px solid black",
-  };
 
-  const boxElement = boxes.map((box) => (
-    <div className="box" key={box.id} style={style}></div>
-  ));
+  //map through box data
+  const squareElement = squares.map((square) => {
+    return (
+      <Box
+        key={square.id}
+        id={square.id}
+        on={square.on}
+        toggle={toggleOnandOff}
+      />
+    );
+  });
+  //toggle
+  function toggleOnandOff(id) {
+    setSquares((prevSquares) => {
+      return prevSquares.map((square) => {
+        return square.id === id ? { ...square, on: !square.on } : square;
+      });
+    });
 
-  return (
-    <div className="App">
-      <Header />
+    {
+      /*
+    setSquares((prevSquares) => {
+      const newSquares = [];
+      for (let i = 0; i < prevSquares.length; i++) {
+        const currentSquare = prevSquares[i];
+        if (currentSquare.id === id) {
+          const updatedSquare = { ...currentSquare, on: !currentSquare.on };
+          newSquares.push(updatedSquare);
+        } else {
+          newSquares.push(currentSquare);
+        }
+      }
+      return newSquares;
+    });
+  
+  }
+*/
+    }
 
-      <Meme />
-      <Box on={boxes} />
-    </div>
-  );
+    return (
+      <div className="app">
+        {/*<Header />*/}
+        {squareElement}
+        {/*<Meme />*/}
+      </div>
+    );
+  }
 }
-
 export default App;

@@ -5,7 +5,7 @@ function Header(props) {
     <div className="header-container">
       <div className="wrapper">
         <div className="header-content">
-          <h1>😃 Meme Generator</h1>
+          <h1>🤪 Meme Generator</h1>
           {props.name}
         </div>
       </div>

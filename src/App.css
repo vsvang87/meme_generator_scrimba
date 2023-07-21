@@ -27,12 +27,11 @@ body {
   min-height: 10vh;
 }
 .form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: inline-block;
+  width: 98%;
 }
 .form input {
-  width: 48%;
+  width: 100%;
   outline: none;
   padding: 0.5rem 0.3rem;
   border: 1px solid lightgray;
@@ -49,18 +48,42 @@ body {
   color: #fff;
   border-radius: 5px;
 }
+
 /*-----------------Image Container---------------------------*/
 .result-container {
   padding-top: 2rem;
+  position: relative;
 }
 .result-container img {
   width: 100%;
 }
+.meme-text {
+  position: absolute;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+}
+.text-top {
+  top: 0;
+}
+.app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*-----------------Box Component--------------------------*/
 .box {
   height: 100px;
   width: 100px;
   border: 1px solid black;
-  display: inline-block;
   margin-right: 4px;
   border-radius: 5px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+input {
+  margin: 0.5rem;
 }

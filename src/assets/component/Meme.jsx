@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import memesData from "./memesData";
+import React, { useState, useEffect } from "react";
 
 function Meme() {
   //set state
@@ -9,22 +8,53 @@ function Meme() {
     bottomText: "",
     randomImage: "http://i.imgflip.com/1bij.jpg",
   });
-  const [allMemeImages, setAllMemeImages] = useState(memesData);
+  const [allMemeImages, setAllMemeImages] = useState([]);
 
+  useEffect(() => {
+    async function getMemes() {
+      const res = await fetch("https://api.imgflip.com/get_memes");
+      const data = await res.json();
+      setAllMemeImages(data.data.memes);
+    }
+    getMemes();
+  }, []);
+
+  //get random memes
   function getMemeImage() {
-    const memesArray = allMemeImages.data.memes;
-    const randomNumber = Math.floor(Math.random() * memesArray.length);
-    const url = memesArray[randomNumber].url;
+    const randomNumber = Math.floor(Math.random() * allMemeImages.length);
+    const url = allMemeImages[randomNumber].url;
 
     setMeme((prevMeme) => ({ ...prevMeme, randomImage: url }));
   }
+
+  //on change handler
+  function changeHandler(event) {
+    const { name, value } = event.target;
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      [name]: value,
+    }));
+  }
+
   return (
     <div className="meme-container">
       <div className="wrapper">
         <div className="meme-content">
           <form className="form">
-            <input type="text" placeholder="Top text..." />
-            <input type="text" placeholder="Bottom text..." />
+            <input
+              type="text"
+              placeholder="Top text..."
+              name="topText"
+              value={meme.topText}
+              onChange={changeHandler}
+            />
+            <input
+              type="text"
+              placeholder="Bottom text..."
+              name="bottomText"
+              value={meme.bottomText}
+              onChange={changeHandler}
+            />
           </form>
           <button className="btn" onClick={getMemeImage}>
             Get new meme image 😉
@@ -32,6 +62,8 @@ function Meme() {
         </div>
         <div className="result-container">
           <img src={meme.randomImage} alt="" />
+          <h2 className="meme-text text-top">{meme.topText}</h2>
+          <h2 className="meme-text text-bottom">{meme.bottomText}</h2>
         </div>
       </div>
     </div>

@@ -24,7 +24,7 @@ function Card() {
         <article className="card">
           <img src="./images/user.png" className="card--image" />
           <div className="card--info">
-            <Star isFilled={contact.isFavorite} />
+            <Star isFilled={contact.isFavorite} handleClick={toggleFavorite} />
 
             <h2 className="card--name">
               {contact.firstName} {contact.lastName}
